@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.net.InetAddress;
 import java.nio.ByteBuffer;
 import java.text.DecimalFormat;
+import java.util.Arrays;
 
 
 import edu.umass.cs.msocket.FlowPath;
@@ -23,15 +24,21 @@ public class msocketclient  extends AsyncTask<Void, Void, Void> {
     private String response = "";
     private TextView textResponse;
     private static DecimalFormat df = new DecimalFormat("0.00##");
-    private static final int TOTAL_ROUND = 1;
-    private static int numOfBytes = 10000000;
+    private int TOTAL_ROUND = 1;
+    private int numOfBytes = 10000000;
+    private double[] throughput;
+    private double[] download_time;
 
 
-    msocketclient(String addr, int port, TextView textResponse) {
+    msocketclient(String addr, int port, TextView textResponse, int numbytes, int numrounds) {
         serverip = addr;
         serverport = port;
-
+        numOfBytes=numbytes;
+        TOTAL_ROUND=numrounds;
+        throughput=new double[numrounds];
+        download_time=new double[numrounds];
         this.textResponse = textResponse;
+
     }
 
 
@@ -39,7 +46,7 @@ public class msocketclient  extends AsyncTask<Void, Void, Void> {
 
         try{
                 MSocket ms = new MSocket(InetAddress.getByName(serverip), serverport);
-                ms.addFlowPath();
+//                ms.addFlowPath();
 
                 OutputStream os = ms.getOutputStream();
                 InputStream is = ms.getInputStream();
@@ -89,17 +96,28 @@ public class msocketclient  extends AsyncTask<Void, Void, Void> {
                     long elapsed = System.currentTimeMillis() - start;
                     System.out.println("[Download Time :] " + elapsed + " ms");
                     System.out.println("[Throughput:] " + df.format((numOfBytes * 8) / 1000.0 / elapsed) + " mbps");
+                    download_time[rd]=elapsed;
+                    throughput[rd]= (numOfBytes * 8) / 1000.0 / elapsed;
 
 
-                    response = response + "[Download Time:] " + Long.toString(elapsed)+ " ms" + "\n";
-                    response = response + "[Throughput:] " + df.format((numOfBytes * 8) / 1000.0 / elapsed) + " mbps" + "\n";
+
 
                     rd++;
 
                 }
+                double sum1=0;
+                double sum2=0;
+                for(int i=0;i<throughput.length;i++){
+                    sum1= sum1 + throughput[i];
+                    sum2 = sum2 + download_time[i];
 
-                os.write(-1);
-                os.flush();
+                }
+
+                 response = response + "[Average Download Time:] " + Double.toString(sum2/TOTAL_ROUND)+ " ms" + "\n";
+                 response = response + "[Average Throughput:] " +  Double.toString(sum1/TOTAL_ROUND).substring(0,6) + " mbps" + "\n";
+
+                 os.write(-1);
+                 os.flush();
 
                 ms.close();
                 System.out.println("Socket closed");

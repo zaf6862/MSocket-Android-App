@@ -33,4 +33,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation files('opt_rtx_1MB.jar')
+    implementation files('commons-math3-3.6.1.jar')
 }

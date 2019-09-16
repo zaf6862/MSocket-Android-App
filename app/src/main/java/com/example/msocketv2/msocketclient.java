@@ -34,7 +34,7 @@ public class msocketclient  extends AsyncTask<Void, Void, Void> {
         serverip = addr;
         serverport = port;
         numOfBytes=numbytes;
-        TOTAL_ROUND=numrounds;
+        TOTAL_ROUND=1;
         throughput=new double[numrounds];
         download_time=new double[numrounds];
         this.textResponse = textResponse;
@@ -74,10 +74,6 @@ public class msocketclient  extends AsyncTask<Void, Void, Void> {
 
                     int numSent = numOfBytes;
                     System.out.println("[Client:] To read " + numSent + " bytes data from input stream...");
-
-
-
-
                     ByteBuffer dbuf = ByteBuffer.allocate(4);
                     dbuf.putInt(numSent);
                     byte[] bytes = dbuf.array();
@@ -121,7 +117,7 @@ public class msocketclient  extends AsyncTask<Void, Void, Void> {
 
                 ms.close();
                 System.out.println("Socket closed");
-                MobilityManagerClient.shutdownMobilityManager();
+//                MobilityManagerClient.shutdownMobilityManager();
 
         } catch (Exception e) {
             e.printStackTrace();

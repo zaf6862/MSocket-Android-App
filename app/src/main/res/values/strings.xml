@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MSocket V2</string>
+    <string-array name="units">
+        <item>B</item>
+        <item>KB</item>
+        <item>MB</item>
+    </string-array>
 </resources>
+

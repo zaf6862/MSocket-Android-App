@@ -6,54 +6,130 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="Hello World!"-->
-    <!--app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--app:layout_constraintRight_toRightOf="parent"-->
-    <!--app:layout_constraintTop_toTopOf="parent" />-->
+    <EditText
+        android:id="@+id/download_mean"
+        android:layout_width="140dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:hint="Enter Mean"
+        android:inputType="number|numberDecimal"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/uplaod_mean"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <EditText
+        android:id="@+id/download_std"
+        android:layout_width="139dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="196dp"
+        android:hint="Enter Std Dev"
+        android:inputType="number|numberDecimal"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/start_button"
+        app:layout_constraintEnd_toStartOf="@+id/upload_std"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/download_mean"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/uplaod_mean"
+        android:layout_width="176dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:hint="Enter Mean"
+        android:inputType="number|numberDecimal"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+    <EditText
+        android:id="@+id/upload_std"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Enter Std Dev"
+        android:inputType="number|numberDecimal"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/stop_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uplaod_mean"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/request_bytes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/start_button"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Request Bytes"
+        android:text="Start Test"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/stop_button"
+        app:layout_constraintHorizontal_bias="0.109"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.41" />
+        app:layout_constraintVertical_bias="0.43" />
+
+    <Button
+        android:id="@+id/stop_button"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Stop Test"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.43" />
 
     <TextView
         android:id="@+id/output"
-        android:layout_width="314dp"
-        android:layout_height="121dp"
+        android:layout_width="356dp"
+        android:layout_height="208dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Output of the experiment will be dsiplayed here"
+        android:layout_marginBottom="20dp"
+        android:hint="This is where the output will be printed after each transfer"
+        android:textSize="24sp"
+        android:typeface="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.882" />
+        app:layout_constraintTop_toBottomOf="@+id/start_button" />
 
     <EditText
-        android:id="@+id/numbytes"
-        android:layout_width="225dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_width="163dp"
+        android:layout_height="41dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -61,74 +137,47 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
-        android:hint="Enter Number of Bytes"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/request_bytes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.217"
+        android:text="Download (MB)"
+        app:layout_constraintBottom_toTopOf="@+id/download_mean"
+        app:layout_constraintEnd_toStartOf="@+id/editText2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/numrounds"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:id="@+id/editText2"
+        android:layout_width="192dp"
+        android:layout_height="45dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
-        android:hint="Enter Number of Rounds"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/request_bytes"
+        android:text="Upload (MB)"
+        app:layout_constraintBottom_toTopOf="@+id/uplaod_mean"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.219"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numbytes"
-        app:layout_constraintVertical_bias="0.56" />
-
-    <TextView
-        android:id="@+id/bytes_unit"
-        android:layout_width="81dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:paddingTop="10dp"
-        android:text="Bytes"
-        android:textSize="20dp"
-        app:autoSizeMaxTextSize="100dp"
-        app:layout_constraintBottom_toTopOf="@+id/numrounds"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
-        app:layout_constraintStart_toEndOf="@+id/numbytes"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.802" />
+        app:layout_constraintVertical_bias="0.142" />
 
-    <TextView
-        android:id="@+id/roundsunit"
-        android:layout_width="81dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:paddingTop="10dp"
-        android:text="Rounds"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/request_bytes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.214"
-        app:layout_constraintStart_toEndOf="@+id/numrounds"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.864" />
-
+    <!--    <Spinner-->
+<!--        android:id="@+id/spinner"-->
+<!--        android:layout_width="78dp"-->
+<!--        android:layout_height="28dp"-->
+<!--        android:layout_marginStart="12dp"-->
+<!--        android:layout_marginLeft="12dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        android:layout_marginRight="32dp"-->
+<!--        android:layout_marginBottom="29dp"-->
+<!--        android:spinnerMode="dropdown"-->
+<!--        android:entries="@strings/units"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/download_mean"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/editText2"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/editText"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="1.0" />-->
 </android.support.constraint.ConstraintLayout>
